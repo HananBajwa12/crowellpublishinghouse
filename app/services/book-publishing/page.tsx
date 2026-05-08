@@ -12,7 +12,7 @@ export default function BookPublishingPage() {
       subtitle="From Manuscript to Published Author"
       description="Our comprehensive publishing packages handle every aspect of bringing your book to market. From editing and design to production and distribution, we provide the complete infrastructure you need to publish professionally while you retain full rights and control."
       iconName="BookOpen"
-      heroImage="/images/publishing-hero.jpg"
+      heroImage="/services/book-publishing.png"
       features={[
         {
           title: "Complete Publishing Packages",

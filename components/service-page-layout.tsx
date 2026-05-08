@@ -104,7 +104,7 @@ export function ServicePageLayout({
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="text-lg px-8">
-                  <a href="tel:+18889080775">
+                  <a href="tel:+17188781604">
                     <Phone className="mr-2 h-5 w-5" />
                     Call Now
                   </a>
@@ -327,9 +327,9 @@ export function ServicePageLayout({
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="text-lg px-8 border-background/30 text-background hover:bg-background/10">
-                <a href="tel:+18889080775">
+                <a href="tel:+17188781604">
                   <Phone className="mr-2 h-5 w-5" />
-                  +1 (444)-132-1234
+                  (718) 878-1604
                 </a>
               </Button>
             </div>

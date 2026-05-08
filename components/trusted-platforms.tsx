@@ -12,8 +12,15 @@ const platforms = [
 
 export function TrustedPlatforms() {
   return (
-    <section className="py-20 bg-card/30 overflow-hidden border-y border-border">
-      <div className="container mx-auto px-4 mb-16 text-center">
+    <section className="relative py-24 overflow-hidden border-y border-border bg-foreground">
+      <div
+        className="absolute inset-0 bg-cover bg-center grayscale"
+        style={{ backgroundImage: "url('/images/ghostwriting-hero.jpg')" }}
+      />
+      <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.78)_0%,rgba(255,255,255,0.45)_34%,rgba(255,255,255,0.08)_68%,rgba(0,0,0,0.28)_100%)]" />
+
+      <div className="container mx-auto px-4 mb-12 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,10 +37,10 @@ export function TrustedPlatforms() {
         </motion.div>
       </div>
 
-      <div className="relative flex overflow-hidden">
+      <div className="relative z-10 flex overflow-hidden bg-white/45 py-4 shadow-[0_0_24px_rgba(255,255,255,0.45)]">
         {/* Gradients to fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
 
         <motion.div
           animate={{

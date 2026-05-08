@@ -70,18 +70,18 @@ export function Header() {
           </div>
 
           <div className="flex items-center gap-8 text-sm">
-            <a href="tel:+18889080775" className="flex flex-col items-end group">
+            <a href="tel:+17188781604" className="flex flex-col items-end group">
               <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Call Us 24/7</span>
               <div className="flex items-center gap-2 text-primary font-bold text-base group-hover:opacity-80 transition-opacity">
                 <Phone className="h-4 w-4" />
-                +1 (444)-132-1234
+                (718) 878-1604
               </div>
             </a>
-            <a href="mailto:info@crowellpublishing.com" className="hidden sm:flex flex-col items-end group border-l border-border pl-8">
+            <a href="mailto:info@crowellpublishinghouse.com" className="hidden sm:flex flex-col items-end group border-l border-border pl-8">
               <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Email Us</span>
               <div className="flex items-center gap-2 text-primary font-bold text-base group-hover:opacity-80 transition-opacity">
                 <Mail className="h-4 w-4" />
-                info@crowellpublishing.com
+                info@crowellpublishinghouse.com
               </div>
             </a>
           </div>

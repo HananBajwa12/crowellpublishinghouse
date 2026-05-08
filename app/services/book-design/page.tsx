@@ -12,7 +12,7 @@ export default function BookDesignPage() {
       subtitle="Beautiful Books That Captivate Readers"
       description="First impressions matter. Our award-winning designers create stunning book covers that grab attention and interior layouts that provide an exceptional reading experience. Stand out in a crowded marketplace with professional design."
       iconName="Palette"
-      heroImage="/images/design-hero.jpg"
+      heroImage="/services/book-design.png"
       features={[
         {
           title: "Custom Cover Design",

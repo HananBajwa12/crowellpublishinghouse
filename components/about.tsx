@@ -28,10 +28,10 @@ const features = [
 ];
 
 const highlights = [
-  "35+ years of publishing excellence",
-  "1,500+ authors published worldwide",
-  "Award-winning design team",
-  "Global distribution network",
+  "Founded originally in 1878",
+  "Re-established in 2014",
+  "Author-focused publishing model",
+  "Full-service publishing support",
 ];
 
 export function About() {
@@ -63,20 +63,29 @@ export function About() {
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Founded in 1878, Crowell Publishing House was established with a clear
-                commitment to authors to provide accessible, high quality editing and
-                publishing services without barriers or exclusivity.
+                Founded originally in 1878, Crowell Publishing House built its reputation on a
+                longstanding dedication to supporting authors and bringing compelling stories
+                to readers across generations. With a rich legacy in the publishing industry,
+                the company became known for its commitment to literary excellence and
+                author-focused publishing services.
               </p>
               <p>
-                From the very beginning, our founders recognized that many writers require
-                expert guidance to refine their manuscripts and successfully navigate the
-                publishing process in an increasingly competitive marketplace.
+                In 2014, Crowell Publishing House was re-established with a renewed vision
+                tailored to the evolving publishing landscape, embracing a modern
+                self-publishing model designed to provide writers with greater creative
+                control, flexibility, and accessibility. This transformation allowed the
+                company to continue its historic mission while adapting to the needs of
+                today's independent authors.
               </p>
               <p>
-                Today, we are proud to be recognized as a reliable self-publishing partner
-                for storytellers of all kinds from poets to novelists. Our experienced team
-                of writers, editors, designers, and marketing professionals are passionate
-                book lovers who work closely with you at every stage of the journey.
+                Today, Crowell Publishing House proudly serves as a trusted self-publishing
+                partner for writers of all genres, from aspiring storytellers and poets to
+                established authors and industry professionals. Our team of experienced
+                editors, designers, publishing consultants, and marketing specialists works
+                collaboratively with every client to guide their manuscript from concept to
+                publication and beyond. With a passion for literature and a commitment to
+                quality, we strive to provide comprehensive publishing solutions that empower
+                authors at every stage of their journey.
               </p>
             </div>
 

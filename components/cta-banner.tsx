@@ -101,11 +101,11 @@ export function CtaBanner() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-background/30 text-background hover:bg-background/10 text-lg px-8"
+                className="border-background/30 bg-background text-foreground hover:bg-background/90 hover:text-foreground text-lg px-8"
               >
-                <a href="tel:+18889080775">
+                <a href="tel:+17188781604">
                   <Phone className="mr-2 h-5 w-5" />
-                  +1 (444)-132-1234
+                  (718) 878-1604
                 </a>
               </Button>
             </div>

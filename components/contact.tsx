@@ -12,14 +12,14 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (444)-132-1234",
-    href: "tel:+18889080775",
+    value: "(718) 878-1604",
+    href: "tel:+17188781604",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "info@crowellpublishing.com",
-    href: "mailto:info@crowellpublishing.com",
+    value: "info@crowellpublishinghouse.com",
+    href: "mailto:info@crowellpublishinghouse.com",
   },
   {
     icon: MapPin,

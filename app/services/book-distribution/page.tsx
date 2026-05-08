@@ -12,7 +12,7 @@ export default function BookDistributionPage() {
       subtitle="Reach Readers Worldwide"
       description="Your book deserves a global audience. We facilitate distribution through all major channels including Amazon, Barnes & Noble, Apple Books, libraries, and 40,000+ retailers worldwide. Print, eBook, and audiobook - we cover every format."
       iconName="Globe"
-      heroImage="/images/distribution-hero.jpg"
+      heroImage="/services/global-distribution.png"
       features={[
         {
           title: "Amazon KDP Setup",

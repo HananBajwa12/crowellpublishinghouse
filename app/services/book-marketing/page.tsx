@@ -12,7 +12,7 @@ export default function BookMarketingPage() {
       subtitle="Get Noticed and Build Your Author Brand"
       description="Writing your book is only half the battle. Our marketing experts develop and execute strategies that get your book in front of the right readers, build your author platform, and drive sales. Let us amplify your voice."
       iconName="Megaphone"
-      heroImage="/images/marketing-hero.jpg"
+      heroImage="/services/book-marketing.png"
       features={[
         {
           title: "Launch Campaign Strategy",

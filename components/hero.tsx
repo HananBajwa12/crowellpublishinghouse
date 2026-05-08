@@ -59,41 +59,19 @@ function AnimatedCounter({ target, suffix = "+" }: { target: number; suffix?: st
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-48 lg:pt-56 overflow-hidden bg-gradient-to-b from-background via-background to-card">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating orbs */}
-        <motion.div
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            y: [0, 30, 0],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
-        />
-
-        {/* Subtle pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
+    <section className="relative min-h-screen flex items-center justify-center pt-48 lg:pt-56 overflow-hidden bg-foreground">
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/services/ghostwriting.png"
+      >
+        <source src="https://www.pexels.com/video/6143904/download/" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/75" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0,rgba(0,0,0,.35)_70%)]" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
@@ -109,7 +87,7 @@ export function Hero() {
               alt="Crowell Publishing House"
               width={180}
               height={180}
-              className="mx-auto h-40 w-auto drop-shadow-lg"
+              className="mx-auto h-32 md:h-40 w-auto drop-shadow-lg"
               priority
             />
           </motion.div>
@@ -119,10 +97,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 border border-primary/20"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/90 text-primary text-sm font-medium mb-6 border border-white/40 shadow-lg"
           >
             <Sparkles className="w-4 h-4" />
-            Trusted Full-Service Book Publishing in USA
+            Where Great Stories Become Published Works
           </motion.div>
 
           {/* Heading */}
@@ -130,7 +108,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6 font-serif"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 font-serif"
           >
             Get Your Manuscript{" "}
             <span className="relative">
@@ -159,9 +137,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-white/85 mb-10 max-w-2xl mx-auto leading-relaxed"
           >
-            Ghostwriting • Editing • Design • Global Distribution • Marketing —
+            Ghostwriting, editing, design, global distribution, and marketing:
             we handle the publishing journey while you focus on your creative vision.
           </motion.p>
 
@@ -179,9 +157,9 @@ export function Hero() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 hover:bg-primary/5">
-              <a href="tel:+18889080775">
+              <a href="tel:+17188781604">
                 <Phone className="mr-2 h-5 w-5" />
-                +1 (444)-132-1234
+                (718) 878-1604
               </a>
             </Button>
           </motion.div>
@@ -198,7 +176,7 @@ export function Hero() {
                 key={index}
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="relative group text-center p-6 rounded-2xl bg-card/80 backdrop-blur-sm border border-border shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300"
+                className="relative group text-center p-6 rounded-xl bg-white/90 backdrop-blur-sm border border-white/40 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300"
               >
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative">
@@ -223,12 +201,12 @@ export function Hero() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2"
+          className="w-6 h-10 rounded-full border-2 border-white/40 flex items-start justify-center p-2"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-1.5 h-1.5 rounded-full bg-primary"
+            className="w-1.5 h-1.5 rounded-full bg-white"
           />
         </motion.div>
       </motion.div>

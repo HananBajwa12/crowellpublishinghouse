@@ -8,6 +8,7 @@ const steps = [
     number: "01",
     icon: MessageCircle,
     title: "Talk to Us",
+    image: "/services/ghostwriting.png",
     description: "We begin with a conversation about your goals and your book. This includes an editorial review and critical evaluation of your manuscript, followed by further discussions until we achieve the desired outcome.",
     color: "from-amber-500 to-orange-500",
   },
@@ -15,6 +16,7 @@ const steps = [
     number: "02",
     icon: Edit3,
     title: "Refine Your Manuscript",
+    image: "/services/book-editing.png",
     description: "Our experienced book editors and ghostwriters will enhance your story in whatever way you require. This process takes a few months and is entirely human-generated. Perfection cannot be rushed.",
     color: "from-orange-500 to-red-500",
   },
@@ -22,6 +24,7 @@ const steps = [
     number: "03",
     icon: Paintbrush,
     title: "Design & Format",
+    image: "/services/book-design.png",
     description: "We provide your book with a professional visual identity. This includes eye-catching covers, visuals such as maps and illustrations, and precise formatting that matches traditional publishing standards.",
     color: "from-red-500 to-rose-500",
   },
@@ -29,6 +32,7 @@ const steps = [
     number: "04",
     icon: Rocket,
     title: "Publish & Launch",
+    image: "/services/book-publishing.png",
     description: "We expertly prepare your book for all major platforms, including Amazon, Barnes & Noble, and IngramSpark! Our services include providing ISBNs, protecting your rights, and distributing globally.",
     color: "from-rose-500 to-pink-500",
   },
@@ -36,6 +40,7 @@ const steps = [
     number: "05",
     icon: TrendingUp,
     title: "Promote & Grow",
+    image: "/services/book-marketing.png",
     description: "We focus on marketing, branding, and publicity to expand your readership. From author websites and press releases to social media management, we provide everything you need to succeed.",
     color: "from-pink-500 to-purple-500",
   },
@@ -125,8 +130,23 @@ export function Process() {
                 </motion.div>
               </div>
 
-              {/* Spacer for alternating layout */}
-              <div className="hidden md:block flex-1" />
+              {/* Visual panel */}
+              <motion.div
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="hidden md:block flex-1"
+              >
+                <div className="relative h-[210px] overflow-hidden rounded-3xl border border-border bg-card shadow-lg">
+                  <img
+                    src={step.image}
+                    alt={step.title}
+                    className="h-full w-full object-cover grayscale"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/45 via-transparent to-transparent" />
+                  <div className={`absolute bottom-5 ${index % 2 === 1 ? "right-5" : "left-5"} rounded-full bg-background/90 px-4 py-2 text-sm font-semibold text-primary shadow-lg`}>
+                    Step {step.number}
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

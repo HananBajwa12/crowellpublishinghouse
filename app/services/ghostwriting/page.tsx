@@ -12,7 +12,7 @@ export default function GhostwritingPage() {
       subtitle="Transform Your Ideas Into a Compelling Manuscript"
       description="Whether you have a rough draft or just an idea, our professional ghostwriters work closely with you to capture your unique voice and bring your story to life. We handle fiction, memoirs, business books, and more."
       iconName="PenTool"
-      heroImage="/images/ghostwriting-hero.jpg"
+      heroImage="/services/ghostwriting.png"
       features={[
         {
           title: "Fiction Writing",

@@ -12,7 +12,7 @@ export default function BookEditingPage() {
       subtitle="Polish Your Manuscript to Perfection"
       description="Every great book goes through rigorous editing. Our team of professional editors will refine your manuscript, strengthen your narrative, and ensure your writing shines. From developmental editing to final proofreading, we cover it all."
       iconName="FilePen"
-      heroImage="/images/editing-hero.jpg"
+      heroImage="/services/book-editing.png"
       features={[
         {
           title: "Developmental Editing",

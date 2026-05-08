@@ -132,24 +132,24 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:+18889080775"
+                  href="tel:+17188781604"
                   className="flex items-center gap-3 text-background/70 hover:text-background transition-colors group"
                 >
                   <div className="w-8 h-8 rounded-lg bg-background/10 flex items-center justify-center group-hover:bg-primary transition-colors">
                     <Phone className="h-4 w-4" />
                   </div>
-                  +1 (444)-132-1234
+                  (718) 878-1604
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@crowellpublishing.com"
+                  href="mailto:info@crowellpublishinghouse.com"
                   className="flex items-center gap-3 text-background/70 hover:text-background transition-colors group"
                 >
                   <div className="w-8 h-8 rounded-lg bg-background/10 flex items-center justify-center group-hover:bg-primary transition-colors">
                     <Mail className="h-4 w-4" />
                   </div>
-                  info@crowellpublishing.com
+                  info@crowellpublishinghouse.com
                 </a>
               </li>
               <li>
