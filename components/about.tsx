@@ -62,7 +62,6 @@ export function About() {
               About <span className="text-primary">Crowell</span> Publishing House
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
-
               <p>
                 Founded originally in 1878, Crowell Publishing House built its reputation on a
                 longstanding dedication to supporting authors and bringing compelling stories
