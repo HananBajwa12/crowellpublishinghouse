@@ -4,79 +4,51 @@ import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { useCallback, useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Anthony Adams",
-    date: "Dec 18, 2024",
+    name: "casey jonas",
+    date: "October 19, 2013",
     rating: 5,
-    text: "Justin is extremely professional and the whole process has been easy and straightforward. Crowell Publishing made my dream of becoming an author a reality.",
+    title: "sphereland",
+    format: "Paperback",
+    cover: "/books/sphereland.jpg",
+    text: "i really enjoyed sphereland and the concepts it introduces to the reader. it is a great story that shares the spirit of the works that preceeded it like Flatland by Abbott.",
   },
   {
-    name: "Monica Lallo",
-    date: "Dec 12, 2024",
+    name: "Kate Bell",
+    date: "May 29, 2019",
     rating: 5,
-    text: "My experience with Crowell Publishing House for editing services was truly exceptional. Their team displayed a keen eye for details and a deep understanding of storytelling.",
+    title: "A classic of children's literature",
+    format: "Kindle",
+    cover: "/books/bridge-to-terabithia.jpg",
+    text: "I very much enjoyed re-reading this as an adult. It doesn't have a happy ending, which is rare in children's books, but so true in real life. I found the characters very finely drawn and the rural life so clearly described with just the right details.",
   },
   {
-    name: "Berel Solomon",
-    date: "Dec 10, 2024",
+    name: "Robin Landa",
+    date: "August 1, 2010",
     rating: 5,
-    text: "I can&apos;t recommend Crowell Publishing book marketing services enough! They don&apos;t just promote your book - they genuinely believe in your story and work tirelessly to help it find its audience.",
+    title: "Hilarious",
+    format: "Paperback",
+    cover: "/books/come-away-shirley.jpg",
+    text: "A must read. This picture book can teach any writer or art director about the synergistic relationship between words and images.",
   },
   {
-    name: "Maizy J.",
-    date: "Dec 08, 2024",
+    name: "ed r.",
+    date: "November 4, 2025",
     rating: 5,
-    text: "Crowell Publishing produces captivating well-crafted stories with a dedication to quality and originality. Making it a standout independent literary publishing house.",
-  },
-  {
-    name: "Scarlet Jack",
-    date: "Dec 09, 2024",
-    rating: 4,
-    text: "Pretty straightforward process from start to finish. Had a couple moments where I wasn&apos;t sure what was happening. Still, everything turned out fine in the end.",
-  },
-  {
-    name: "Sebastian Liam",
-    date: "Nov 28, 2024",
-    rating: 5,
-    text: "I was not really sure how everything would turn out, but honestly they surprised me in a good way. They handled my requests properly and didn&apos;t get annoyed when I asked for changes.",
-  },
-  {
-    name: "Matt",
-    date: "Dec 08, 2024",
-    rating: 5,
-    text: "I started with another company but eventually switched to Crowell Publishing. The transition was smooth and they helped me fulfill a lifelong dream of publishing my book.",
-  },
-  {
-    name: "Aaron Smith",
-    date: "Dec 08, 2024",
-    rating: 5,
-    text: "The support staff had my back! I just finished my first book. Many months of long hours of writing on top of a full time job left me discouraged. They guided me through everything.",
+    title: "Good story for kids.",
+    format: "Hardcover",
+    cover: "/books/little-old-lady.jpg",
+    text: "This was a gift to a 6 year old. She knew most of the story and was happy to get the book. Her sister said she read the book three times before they had to leave for school the next morning. She liked it was hard cover.",
   },
 ];
 
 export function Testimonials() {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
+  const [emblaRef] = useEmblaCarousel(
     { loop: true, align: "start" },
     [Autoplay({ delay: 4000, stopOnInteraction: false })]
   );
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
-    emblaApi.on("select", onSelect);
-    return () => {
-      emblaApi.off("select", onSelect);
-    };
-  }, [emblaApi]);
 
   return (
     <section id="testimonials" className="py-24 bg-gradient-to-b from-card to-background relative overflow-hidden">
@@ -102,10 +74,10 @@ export function Testimonials() {
             Client Testimonials
           </motion.span>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 font-serif">
-            What Our <span className="text-primary">Authors</span> Say
+            Voices Of Our <span className="text-primary">Readers</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Don&apos;t just take our word for it. Listen to reviews from authors, just like you, 
+            Don&apos;t just take our word for it. Read reviews from readers, just like you, 
             who experienced the quality and commitment of Crowell Publishing House.
           </p>
         </motion.div>
@@ -121,9 +93,16 @@ export function Testimonials() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3"
+                  className="flex-shrink-0 w-full md:w-1/2 lg:w-1/4 px-3"
                 >
                   <div className="h-full p-6 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 group">
+                    <div className="mb-5 flex h-48 items-end justify-center rounded-xl bg-muted/40 p-3">
+                      <img
+                        src={testimonial.cover}
+                        alt={testimonial.title}
+                        className="max-h-full max-w-full object-contain shadow-lg"
+                      />
+                    </div>
                     {/* Rating */}
                     <div className="flex items-center gap-1 mb-4">
                       {Array.from({ length: 5 }).map((_, i) => (
@@ -140,7 +119,10 @@ export function Testimonials() {
 
                     {/* Quote */}
                     <Quote className="h-8 w-8 text-primary/20 mb-2 group-hover:text-primary/40 transition-colors" />
-                    <p className="text-foreground mb-4 line-clamp-4 leading-relaxed">
+                    <h3 className="font-serif text-lg font-bold text-foreground mb-2">
+                      {testimonial.title}
+                    </h3>
+                    <p className="text-foreground mb-4 line-clamp-5 leading-relaxed">
                       {testimonial.text}
                     </p>
 
@@ -155,44 +137,16 @@ export function Testimonials() {
                         </span>
                       </div>
                       <span className="text-sm text-muted-foreground">
-                        {testimonial.date}
+                        {testimonial.format}
                       </span>
                     </div>
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      Reviewed on {testimonial.date}
+                    </p>
                   </div>
                 </motion.div>
               ))}
             </div>
-          </div>
-
-          {/* Navigation Buttons */}
-          <div className="flex items-center justify-center gap-4 mt-10">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={scrollPrev}
-              className="rounded-full hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <div className="flex gap-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => emblaApi?.scrollTo(index)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all ${
-                    index === selectedIndex ? "bg-primary w-8" : "bg-border hover:bg-primary/50"
-                  }`}
-                />
-              ))}
-            </div>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={scrollNext}
-              className="rounded-full hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
           </div>
         </div>
       </div>

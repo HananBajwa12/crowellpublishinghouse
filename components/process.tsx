@@ -80,7 +80,7 @@ export function Process() {
         </motion.div>
 
         {/* Steps */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -88,21 +88,21 @@ export function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className={`relative flex flex-col md:flex-row gap-8 pb-16 last:pb-0 ${
+              className={`relative flex flex-col md:grid md:grid-cols-[1fr_72px_1fr] md:items-center gap-6 md:gap-4 pb-10 last:pb-0 ${
                 index % 2 === 1 ? "md:flex-row-reverse" : ""
               }`}
             >
               {/* Timeline Line (center on desktop) */}
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute left-1/2 top-[100px] w-0.5 h-[calc(100%-60px)] bg-gradient-to-b from-border to-transparent -translate-x-1/2" />
+                <div className="hidden md:block absolute left-1/2 top-[84px] w-0.5 h-[calc(100%-30px)] bg-gradient-to-b from-primary/25 via-border to-transparent -translate-x-1/2" />
               )}
 
               {/* Content Card */}
               <motion.div
                 whileHover={{ y: -5 }}
-                className="flex-1"
+                className={`${index % 2 === 1 ? "md:col-start-3" : "md:col-start-1"}`}
               >
-                <div className={`p-8 rounded-3xl bg-card border border-border hover:border-primary/30 hover:shadow-2xl transition-all duration-500 ${
+                <div className={`min-h-[210px] p-7 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-2xl transition-all duration-500 ${
                   index % 2 === 1 ? "md:text-right" : ""
                 }`}>
                   <div className={`flex items-center gap-4 mb-4 ${
@@ -121,10 +121,10 @@ export function Process() {
               </motion.div>
 
               {/* Center Number */}
-              <div className="hidden md:flex items-start justify-center pt-8">
+              <div className="hidden md:flex items-center justify-center md:col-start-2">
                 <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className={`w-16 h-16 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center text-white font-bold text-xl font-serif shadow-xl z-10`}
+                  whileHover={{ scale: 1.08, rotate: 4 }}
+                  className={`w-14 h-14 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center text-white font-bold text-lg font-serif shadow-xl z-10 ring-8 ring-background`}
                 >
                   {step.number}
                 </motion.div>
@@ -132,17 +132,24 @@ export function Process() {
 
               {/* Visual panel */}
               <motion.div
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="hidden md:block flex-1"
+                whileHover={{ y: -5, scale: 1.01 }}
+                className={`hidden md:block ${index % 2 === 1 ? "md:col-start-1 md:row-start-1" : "md:col-start-3"}`}
               >
-                <div className="relative h-[210px] overflow-hidden rounded-3xl border border-border bg-card shadow-lg">
+                <div className="relative h-[210px] overflow-hidden rounded-2xl border border-border bg-neutral-200 shadow-lg">
                   <img
                     src={step.image}
-                    alt={step.title}
-                    className="h-full w-full object-cover grayscale"
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full scale-110 object-cover grayscale blur-md opacity-40"
+                  />
+                  <img
+                    src={step.image}
+                    alt=""
+                    aria-hidden="true"
+                    className="relative z-10 h-full w-full object-contain grayscale [image-rendering:auto]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/45 via-transparent to-transparent" />
-                  <div className={`absolute bottom-5 ${index % 2 === 1 ? "right-5" : "left-5"} rounded-full bg-background/90 px-4 py-2 text-sm font-semibold text-primary shadow-lg`}>
+                  <div aria-hidden="true" className={`absolute bottom-5 ${index % 2 === 1 ? "right-5" : "left-5"} rounded-full bg-background/90 px-4 py-2 text-sm font-semibold text-primary shadow-lg`}>
                     Step {step.number}
                   </div>
                 </div>

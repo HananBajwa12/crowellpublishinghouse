@@ -36,10 +36,10 @@ const services = [
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/#about", label: "About us" },
-  { href: "/#process", label: "Our Process" },
-  { href: "/#testimonials", label: "Testimonials" },
-  { href: "/#contact", label: "Contact us" },
+  { href: "/about-us", label: "About us" },
+  { href: "/our-process", label: "Our Process" },
+  { href: "/testimonials", label: "Testimonials" },
+  { href: "/contact-us", label: "Contact us" },
 ];
 
 export function Header() {

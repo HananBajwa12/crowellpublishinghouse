@@ -92,7 +92,7 @@ export function CtaBanner() {
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-lg px-8 shadow-lg shadow-primary/25"
               >
-                <Link href="#contact">
+                <Link href="/contact-us">
                   Get Started Today
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>

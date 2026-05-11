@@ -68,7 +68,7 @@ export function Hero() {
         playsInline
         poster="/services/ghostwriting.png"
       >
-        <source src="https://www.pexels.com/video/6143904/download/" type="video/mp4" />
+        <source src="/herovid.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/75" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0,rgba(0,0,0,.35)_70%)]" />
@@ -151,7 +151,7 @@ export function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
             <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all">
-              <Link href="#contact">
+              <Link href="/contact-us">
                 Book Free Consultation
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

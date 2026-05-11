@@ -1,7 +1,7 @@
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { About } from "@/components/about";
-import { TrustedPlatforms } from "@/components/trusted-platforms";
+import { TrustedPlatforms, TrustedPlatformsBridge } from "@/components/trusted-platforms";
 import { Services } from "@/components/services";
 import { CtaBanner } from "@/components/cta-banner";
 import { Process } from "@/components/process";
@@ -18,6 +18,7 @@ export default function Home() {
       <Hero />
       <About />
       <TrustedPlatforms />
+      <TrustedPlatformsBridge />
       <Services />
       <CtaBanner />
       <Process />

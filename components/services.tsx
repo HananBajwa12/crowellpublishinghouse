@@ -72,7 +72,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="bg-background pt-14 md:pt-20">
+    <section id="services" className="bg-background">
       <div className="relative overflow-hidden py-20 md:py-24">
         <div
           className="absolute inset-0 bg-cover bg-center grayscale"
@@ -108,12 +108,12 @@ export function Services() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
             <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-              <Link href="#contact">
+              <Link href="/contact-us">
                 Request a Quote
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="bg-white/95 text-foreground hover:bg-white">
+            <Button asChild variant="outline" size="lg" className="bg-white/95 text-foreground border-white/80 hover:bg-primary hover:text-primary-foreground hover:border-primary">
               <a href="tel:+17188781604">(718) 878-1604</a>
             </Button>
           </div>
@@ -132,11 +132,17 @@ export function Services() {
               whileHover={{ y: -8 }}
               className="group relative overflow-hidden rounded-lg bg-white border border-white/70 hover:border-primary/60 hover:shadow-2xl transition-all duration-500"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+              <div className="relative h-48 overflow-hidden bg-neutral-200 md:h-52">
+                <img
+                  src={service.image}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full scale-110 object-cover grayscale blur-md opacity-40"
+                />
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105"
+                  className="relative z-10 h-full w-full object-contain grayscale transition duration-500 group-hover:scale-[1.02] [image-rendering:auto]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 w-12 h-12 rounded-md bg-white/90 flex items-center justify-center shadow-lg">

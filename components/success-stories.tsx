@@ -1,93 +1,99 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
 
-const stories = [
+const books = [
   {
-    name: "Jessica M.",
-    role: "Memoir Author",
-    book: "Finding My Way",
-    image: "/avatars/jessica.jpg",
-    story: "I'd been sitting on my memoir for almost two years because I didn't know where to begin. Working with The Pulp House Publishing made it easy! My writer was patient, the designer captured the emotion of my story perfectly, and they even helped me set up my Amazon page. When I held my printed book for the first time, I actually cried.",
+    title: "Sphereland",
+    cover: "/books/sphereland.jpg",
   },
   {
-    name: "Aaron B.",
-    role: "Fantasy Author",
-    book: "The Shadow Gate",
-    image: "/avatars/aaron.jpg",
-    story: "I had a finished manuscript but no idea what to do next. I tried researching self-publishing on my own, but it was overwhelming. The team at The Pulp House Publishing took over and handled it all professionally while keeping me involved creatively. My book cover blew me away, and now my novel is available on Amazon and Apple Books.",
+    title: "Bridge to Terabithia",
+    cover: "/books/bridge-to-terabithia.jpg",
   },
   {
-    name: "Maya L.",
-    role: "Children's Book Author",
-    book: "The Little Star Who Could",
-    image: "/avatars/maya.jpg",
-    story: "I had a story and a few sketches, but I wasn't sure if I could actually make a children's book on my own. They paired me with an illustrator who brought my characters to life. Every page looked magical. Now I see photos of kids reading my book. It's the most amazing feeling.",
+    title: "Come Away from the Water, Shirley",
+    cover: "/books/come-away-shirley.jpg",
   },
   {
-    name: "David R.",
-    role: "Business Author",
-    book: "Lead Like You Mean It",
-    image: "/avatars/david.jpg",
-    story: "As a corporate trainer, I'd wanted to turn my workshop material into a book for years. The editorial team helped me turn my scattered notes into a structured, engaging business book. Within weeks of launching, my book became a powerful tool for my speaking engagements.",
+    title: "The Little Old Lady Who Was Not Afraid of Anything",
+    cover: "/books/little-old-lady.jpg",
+  },
+  {
+    title: "The Little Fir Tree",
+    cover: "/books/little-fir-tree.jpg",
+  },
+  {
+    title: "The Viking Adventure",
+    cover: "/books/viking-adventure.jpg",
+  },
+  {
+    title: "The Ghost of Windy Hill",
+    cover: "/books/ghost-windy-hill.jpg",
+  },
+  {
+    title: "Heaven to Betsy",
+    cover: "/books/heaven-to-betsy.jpg",
   },
 ];
 
 export function SuccessStories() {
   return (
-    <section className="py-20 bg-card">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <p className="text-primary font-medium mb-2">Success Stories</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground font-serif">
-            Authors Who Achieved Their Dreams
+          <p className="text-primary font-medium mb-2">
+            Streamlined Book Publishing for Authors
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground font-serif mb-8">
+            Giving Your Stories a Voice!
           </h2>
+          <div className="mx-auto mb-6 h-px max-w-5xl bg-border" />
+          <p className="max-w-5xl mx-auto text-muted-foreground leading-relaxed">
+            Is there an interesting story that needs to be told? The Crowell
+            Publishing House is your committed USA-based publisher, bringing
+            great books to the world. We offer all authors, whether new or
+            established in the industry, the full tools necessary to sail
+            through the publishing process and bring about the vision with
+            confidence.
+          </p>
         </motion.div>
 
-        {/* Stories Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {stories.map((story, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="relative p-8 rounded-3xl bg-background border border-border hover:shadow-xl transition-shadow"
-            >
-              {/* Quote Icon */}
-              <Quote className="absolute top-6 right-6 h-12 w-12 text-primary/10" />
-
-              {/* Author Info */}
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-primary font-serif">
-                    {story.name.charAt(0)}
-                  </span>
-                </div>
-                <div>
-                  <h3 className="font-bold text-foreground text-lg">{story.name}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    {story.role}, &ldquo;{story.book}&rdquo;
-                  </p>
-                </div>
-              </div>
-
-              {/* Story */}
-              <p className="text-muted-foreground leading-relaxed italic">
-                &ldquo;{story.story}&rdquo;
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative mx-auto max-w-6xl"
+        >
+          <div className="flex flex-wrap items-end justify-center gap-4 md:flex-nowrap md:gap-5">
+            {books.map((book, index) => (
+              <motion.div
+                key={book.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
+                whileHover={{ y: -8 }}
+                className="relative w-24 md:w-28 lg:w-32"
+              >
+                <img
+                  src={book.cover}
+                  alt={book.title}
+                  className="h-36 w-full object-cover shadow-2xl md:h-48 lg:h-52"
+                />
+                <div className="absolute inset-y-0 right-0 w-2 bg-black/15" />
+              </motion.div>
+            ))}
+          </div>
+          <div className="mx-auto h-4 max-w-6xl rounded-b-full bg-gradient-to-b from-muted to-border shadow-lg" />
+        </motion.div>
       </div>
     </section>
   );

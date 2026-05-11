@@ -3,16 +3,16 @@
 import { motion } from "framer-motion";
 
 const platforms = [
-  { name: "Kobo", logo: "/partners/logo_1.webp" },
-  { name: "Barnes & Noble", logo: "/partners/logo_2.webp" },
-  { name: "Amazon", logo: "/partners/logo_3.webp" },
-  { name: "IngramSpark", logo: "/partners/logo_4.webp" },
-  { name: "Google Play Books", logo: "/partners/logo_5.webp" },
+  { name: "Lulu", logo: "/partners/logo_3.webp" },
+  { name: "Google Play Books", logo: "/partners/logo_4.webp" },
+  { name: "Barnes & Noble", logo: "/partners/logo_5.webp" },
+  { name: "Amazon Kindle", logo: "/partners/logo_1.webp" },
+  { name: "IngramSpark", logo: "/partners/logo_2.webp" },
 ];
 
 export function TrustedPlatforms() {
   return (
-    <section className="relative py-24 overflow-hidden border-y border-border bg-foreground">
+    <section className="relative pt-24 pb-12 overflow-hidden border-t border-border bg-foreground">
       <div
         className="absolute inset-0 bg-cover bg-center grayscale"
         style={{ backgroundImage: "url('/images/ghostwriting-hero.jpg')" }}
@@ -36,33 +36,36 @@ export function TrustedPlatforms() {
           </p>
         </motion.div>
       </div>
+    </section>
+  );
+}
 
-      <div className="relative z-10 flex overflow-hidden bg-white/45 py-4 shadow-[0_0_24px_rgba(255,255,255,0.45)]">
-        {/* Gradients to fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+export function TrustedPlatformsBridge() {
+  return (
+    <section className="relative overflow-visible bg-background py-10 md:py-12">
+      <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
+      <div className="relative z-10 flex min-h-[116px] w-full items-center overflow-hidden border-y border-primary/10 bg-white shadow-[0_18px_55px_rgba(0,0,0,0.09)]">
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-white to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-white to-transparent z-10" />
 
         <motion.div
-          animate={{
-            x: ["0%", "-50%"],
-          }}
+          animate={{ x: ["0%", "-50%"] }}
           transition={{
-            duration: 30,
+            duration: 26,
             repeat: Infinity,
             ease: "linear",
           }}
-          className="flex whitespace-nowrap gap-16 md:gap-24 items-center py-4"
+          className="flex w-max items-center gap-14 md:gap-24 py-6"
         >
-          {/* Repeat the platforms array 3 times to ensure no gaps */}
-          {[...platforms, ...platforms, ...platforms].map((platform, index) => (
+          {[...platforms, ...platforms, ...platforms, ...platforms].map((platform, index) => (
             <div 
               key={index} 
-              className="flex items-center justify-center px-4 min-w-[150px]"
+              className="flex min-w-[170px] items-center justify-center px-2 md:min-w-[210px]"
             >
               <img
                 src={platform.logo}
                 alt={platform.name}
-                className="h-12 w-32 md:h-14 md:w-40 object-contain hover:scale-110 transition-transform duration-300 pointer-events-none opacity-70 hover:opacity-100"
+                className="h-12 w-36 object-contain opacity-75 transition-transform duration-300 hover:scale-105 hover:opacity-100 md:h-14 md:w-44"
               />
             </div>
           ))}

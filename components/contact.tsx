@@ -50,8 +50,21 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const subject = encodeURIComponent(
+      `Publishing consultation request from ${formData.firstName} ${formData.lastName}`.trim()
+    );
+    const body = encodeURIComponent(
+      [
+        `Name: ${formData.firstName} ${formData.lastName}`,
+        `Email: ${formData.email}`,
+        `Phone: ${formData.phone || "Not provided"}`,
+        "",
+        "Project Details:",
+        formData.message,
+      ].join("\n")
+    );
+
+    window.location.href = `mailto:info@crowellpublishinghouse.com?subject=${subject}&body=${body}`;
 
     setIsSubmitting(false);
     setIsSubmitted(true);

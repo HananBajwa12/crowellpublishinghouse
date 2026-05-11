@@ -27,11 +27,11 @@ const footerLinks = {
     { label: "Fiction Publishers", href: "/services/fiction-book-publishers" },
   ],
   company: [
-    { label: "About Us", href: "/#about" },
-    { label: "How It Works", href: "/#process" },
-    { label: "Testimonials", href: "/#testimonials" },
-    { label: "FAQ", href: "/#faq" },
-    { label: "Contact", href: "/#contact" },
+    { label: "About Us", href: "/about-us" },
+    { label: "How It Works", href: "/our-process" },
+    { label: "Testimonials", href: "/testimonials" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Contact", href: "/contact-us" },
   ],
   legal: [
     { label: "Privacy Policy", href: "#" },
@@ -41,9 +41,9 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Facebook, href: "https://www.facebook.com/people/Crowell-Publishing-House/61589031205632/?mibextid=wwXIfr&rdid=cUzlUGyfMIy65Ra0&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Cq8EeD1aB%2F%3Fmibextid%3DwwXIfr", label: "Facebook" },
   { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/crowellpublishing?igsh=ZGo0bGEyaWFnNnRv", label: "Instagram" },
   { icon: Linkedin, href: "#", label: "LinkedIn" },
 ];
 
@@ -83,6 +83,8 @@ export function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
+                  target={social.href === "#" ? undefined : "_blank"}
+                  rel={social.href === "#" ? undefined : "noopener noreferrer"}
                   whileHover={{ scale: 1.1, y: -2 }}
                   className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
                 >
