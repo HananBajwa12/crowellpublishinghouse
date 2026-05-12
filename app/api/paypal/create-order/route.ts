@@ -66,21 +66,15 @@ export async function POST(req: Request) {
             description: description || "Payment",
           },
         ],
-        application_context: {
-          landing_page: "GUEST_CHECKOUT",
-          user_action: "PAY_NOW",
-          return_url: "https://example.com/return",
-          cancel_url: "https://example.com/cancel",
-        },
       }),
     });
 
     const orderData = await orderResponse.json();
 
     if (!orderResponse.ok) {
-      console.error("PayPal Order Error Details:", orderData);
+      console.error(`PayPal Order Error [Status ${orderResponse.status}]:`, JSON.stringify(orderData, null, 2));
       return NextResponse.json(
-        { error: "PayPal order error", details: orderData },
+        { error: `PayPal order error (${orderResponse.status})`, details: orderData },
         { status: 500 }
       );
     }
