@@ -66,6 +66,15 @@ export async function POST(req: Request) {
             description: description || "Payment",
           },
         ],
+        payment_source: {
+          paypal: {
+            experience_context: {
+              payment_method_preference: "IMMEDIATE_PAYMENT_REQUIRED",
+              landing_page: "GUEST_CHECKOUT",
+              user_action: "PAY_NOW",
+            },
+          },
+        },
       }),
     });
 
