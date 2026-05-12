@@ -66,14 +66,11 @@ export async function POST(req: Request) {
             description: description || "Payment",
           },
         ],
-        payment_source: {
-          paypal: {
-            experience_context: {
-              payment_method_preference: "IMMEDIATE_PAYMENT_REQUIRED",
-              landing_page: "GUEST_CHECKOUT",
-              user_action: "PAY_NOW",
-            },
-          },
+        application_context: {
+          landing_page: "GUEST_CHECKOUT",
+          user_action: "PAY_NOW",
+          return_url: "https://example.com/return",
+          cancel_url: "https://example.com/cancel",
         },
       }),
     });
@@ -81,19 +78,23 @@ export async function POST(req: Request) {
     const orderData = await orderResponse.json();
 
     if (!orderResponse.ok) {
+      console.error("PayPal Order Error Details:", orderData);
       return NextResponse.json(
         { error: "PayPal order error", details: orderData },
         { status: 500 }
       );
     }
 
+    // DEBUG: Log the full response to see what links PayPal is sending
+    console.log("PayPal Order Response:", JSON.stringify(orderData, null, 2));
+
     const approvalLink = orderData.links?.find(
-      (link: any) => link.rel === "approve"
+      (link: any) => link.rel === "approve" || link.rel === "payer-action"
     )?.href;
 
     if (!approvalLink) {
       return NextResponse.json(
-        { error: "PayPal approval link not found" },
+        { error: "PayPal approval link not found", details: orderData },
         { status: 500 }
       );
     }
