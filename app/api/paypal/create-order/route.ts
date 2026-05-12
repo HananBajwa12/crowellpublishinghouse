@@ -40,6 +40,7 @@ export async function POST(req: Request) {
     const tokenData = await tokenResponse.json();
 
     if (!tokenResponse.ok) {
+      console.error("PayPal Token Error Details:", tokenData);
       return NextResponse.json(
         { error: "PayPal token error", details: tokenData },
         { status: 500 }
