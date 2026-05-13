@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, Edit3, Paintbrush, Rocket, TrendingUp } from "lucide-react";
+import { MessageCircle, Edit3, Paintbrush, Rocket, TrendingUp, Users, CheckCircle2, Award } from "lucide-react";
 
 const steps = [
   {
