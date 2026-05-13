@@ -21,7 +21,7 @@ const services = [
   {
     icon: PenTool,
     title: "Select Your Package & Get Started",
-    image: "/process/bookshelf.png",
+    image: "/process/pointing.png",
     subtitle: "Ownership & Control",
     description: "Retain full rights, creative freedom, and royalties while receiving professional guidance. Our self-publishing approach ensures your vision is prioritized from day one.",
     href: "/services/book-publishing",
@@ -48,7 +48,7 @@ const services = [
   {
     icon: Palette,
     title: "Cover Design & Formatting",
-    image: "/process/team_hands.png",
+    image: "/process/design_snippet.jpg",
     subtitle: "Visual Identity",
     description: "Professionally crafted cover designs and precise formatting for print and digital publication. We ensure optimal readability and full compliance with industry standards.",
     href: "/services/book-design",
@@ -57,7 +57,7 @@ const services = [
   {
     icon: CheckCircle2,
     title: "Final Proofreading",
-    image: "/process/pointing.png",
+    image: "/process/book_coffee.png",
     subtitle: "Quality Assurance",
     description: "Detailed quality review to identify and correct any remaining typographical errors or formatting inconsistencies, ensuring your book delivers a lasting impression.",
     href: "/services/editing-and-proofreading",
@@ -75,7 +75,7 @@ const services = [
   {
     icon: Award,
     title: "Royalties & Ownership",
-    image: "/process/book_coffee.png",
+    image: "/process/bookshelf.png",
     subtitle: "Earn from Your Work",
     description: "Maintain complete ownership of your intellectual property while earning royalties from every book sale across supported distribution platforms globally.",
     href: "/services/author-branding",
@@ -84,7 +84,7 @@ const services = [
   {
     icon: TrendingUp,
     title: "Publishing Success",
-    image: "/process/success_final.png",
+    image: "/process/team_hands.png",
     subtitle: "Lasting Impact",
     description: "Professional attention and exposure in today’s competitive landscape. Explore optional services like targeted marketing to expand your book's reach and success.",
     href: "/testimonials",
