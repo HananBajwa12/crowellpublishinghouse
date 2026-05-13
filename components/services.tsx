@@ -10,62 +10,84 @@ import {
   Megaphone,
   Globe,
   FileEdit,
-  ArrowRight
+  ArrowRight,
+  Users,
+  CheckCircle2,
+  Award,
+  TrendingUp
 } from "lucide-react";
 
 const services = [
   {
     icon: PenTool,
-    title: "Ghostwriting",
-    image: "/services/ghostwriting.png",
-    subtitle: "Bring Your Story to Life",
-    description: "Our ghostwriting, editorial development, and professional book editing services help you write and refine your story, strengthen your message, and perfect your voice.",
-    href: "/services/ghostwriting",
+    title: "Select Your Package & Get Started",
+    image: "/process/bookshelf.png",
+    subtitle: "Ownership & Control",
+    description: "Retain full rights, creative freedom, and royalties while receiving professional guidance. Our self-publishing approach ensures your vision is prioritized from day one.",
+    href: "/services/book-publishing",
+    featured: true,
+  },
+  {
+    icon: Users,
+    title: "Dedicated Publishing Team",
+    image: "/process/team_laptop.png",
+    subtitle: "Personalized Support",
+    description: "Collaborate with a Project Manager and Senior Publishing Consultant focused on guiding your book through every stage with consistent communication and strategic direction.",
+    href: "/services/author-branding",
     featured: true,
   },
   {
     icon: FileEdit,
-    title: "Book Editing",
-    image: "/services/book-editing.png",
-    subtitle: "Polish to Perfection",
-    description: "From developmental editing to proofreading, our expert editors refine your manuscript to meet professional publishing standards.",
+    title: "Manuscript Development",
+    image: "/process/typewriter.png",
+    subtitle: "Editorial Refinement",
+    description: "Our editorial team elevates your manuscript through comprehensive editing designed to strengthen clarity, structure, and overall reader engagement while preserving your unique voice.",
     href: "/services/book-editing",
-    featured: true,
+    featured: false,
   },
   {
     icon: Palette,
-    title: "Book Design",
-    image: "/services/book-design.png",
-    subtitle: "Beautiful Books That Captivate",
-    description: "Our design team specializes in stunning book covers, elegant page layouts, and creative illustrations. We craft visuals that make your story irresistible.",
+    title: "Cover Design & Formatting",
+    image: "/process/team_hands.png",
+    subtitle: "Visual Identity",
+    description: "Professionally crafted cover designs and precise formatting for print and digital publication. We ensure optimal readability and full compliance with industry standards.",
     href: "/services/book-design",
     featured: false,
   },
   {
-    icon: BookOpen,
-    title: "Book Publishing",
-    image: "/services/book-publishing.png",
-    subtitle: "Complete Publishing Packages",
-    description: "Full-service publishing that handles everything from manuscript to market. Print, eBook, and audiobook production with professional quality.",
-    href: "/services/book-publishing",
+    icon: CheckCircle2,
+    title: "Final Proofreading",
+    image: "/process/pointing.png",
+    subtitle: "Quality Assurance",
+    description: "Detailed quality review to identify and correct any remaining typographical errors or formatting inconsistencies, ensuring your book delivers a lasting impression.",
+    href: "/services/editing-and-proofreading",
     featured: false,
   },
   {
-    icon: Megaphone,
-    title: "Book Marketing",
-    image: "/services/book-marketing.png",
-    subtitle: "Get Noticed & Build Your Brand",
-    description: "We manage launch campaigns, social media, SEO, author websites, and more so readers find (and remember) you.",
-    href: "/services/book-marketing",
-    featured: false,
-  },
-  {
-    icon: Globe,
+    icon: Rocket,
     title: "Global Distribution",
-    image: "/services/global-distribution.png",
-    subtitle: "Reach Readers Worldwide",
-    description: "We facilitate book distribution through Amazon, Apple Books, Kobo, IngramSpark, and 40,000+ retailers globally.",
+    image: "/process/distribution.png",
+    subtitle: "Global Reach",
+    description: "We oversee the complete publishing and distribution process on leading platforms such as Amazon Kindle, Barnes & Noble, and Ingram Spark to maximize your visibility.",
     href: "/services/book-distribution",
+    featured: false,
+  },
+  {
+    icon: Award,
+    title: "Royalties & Ownership",
+    image: "/process/book_coffee.png",
+    subtitle: "Earn from Your Work",
+    description: "Maintain complete ownership of your intellectual property while earning royalties from every book sale across supported distribution platforms globally.",
+    href: "/services/author-branding",
+    featured: false,
+  },
+  {
+    icon: TrendingUp,
+    title: "Publishing Success",
+    image: "/process/success_final.png",
+    subtitle: "Lasting Impact",
+    description: "Professional attention and exposure in today’s competitive landscape. Explore optional services like targeted marketing to expand your book's reach and success.",
+    href: "/testimonials",
     featured: false,
   },
 ];
@@ -137,12 +159,12 @@ export function Services() {
                   src={service.image}
                   alt=""
                   aria-hidden="true"
-                  className="absolute inset-0 h-full w-full scale-110 object-cover grayscale blur-md opacity-40"
+                  className="absolute inset-0 h-full w-full object-cover opacity-20 blur-sm"
                 />
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="relative z-10 h-full w-full object-contain grayscale transition duration-500 group-hover:scale-[1.02] [image-rendering:auto]"
+                  className="relative z-10 h-full w-full object-cover transition duration-500 group-hover:scale-105 [image-rendering:auto]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 w-12 h-12 rounded-md bg-white/90 flex items-center justify-center shadow-lg">
