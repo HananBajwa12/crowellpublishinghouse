@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, Edit3, Paintbrush, Rocket, TrendingUp, Users, CheckCircle2, Award } from "lucide-react";
+import { MessageCircle, Edit3, Paintbrush, RocketIcon, TrendingUp, Users, CheckCircle2, Award } from "lucide-react";
 import Image from "next/image";
 
 const steps = [
@@ -52,7 +52,7 @@ const steps = [
   },
   {
     number: "06",
-    icon: Rocket,
+    icon: RocketIcon,
     title: "Global Publishing & Distribution",
     image: "/process/distribution.png",
     description: "Our team oversees the complete distribution process to ensure your book reaches readers across major global marketplaces.",

@@ -14,7 +14,8 @@ import {
   Users,
   CheckCircle2,
   Award,
-  TrendingUp
+  TrendingUp,
+  RocketIcon
 } from "lucide-react";
 
 const services = [
@@ -59,7 +60,7 @@ const services = [
     href: "/services/editing-and-proofreading",
   },
   {
-    icon: Rocket,
+    icon: RocketIcon,
     title: "Global Distribution",
     image: "/process/distribution.png",
     subtitle: "Global Reach",
