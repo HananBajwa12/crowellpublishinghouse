@@ -1,16 +1,3 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "next.config.mjs",
-      "use": "@vercel/next"
-    }
-  ],
-  "env": {
-    "PAYPAL_CLIENT_ID": "AZ4T89wsLgt8jhapQ98Qp0vCGrg_iv40d_dkd84udhXCcVwQANGckSR6vrw57UnE7HafKv5VfLHyO_SY",
-    "PAYPAL_CLIENT_SECRET": "ENXU6rJPlY22oEQ7aZsreG5i5owcRP_88jQ7fXiCdoTSpJULGVJwi-G-Hl_VGfM0IpBqDNQ9lJugH9Pc",
-    "PAYPAL_MODE": "live",
-    "PAYPAL_LIVE_BASE_URL": "https://api-m.paypal.com",
-    "PAYPAL_SANDBOX_BASE_URL": "https://api-m.sandbox.paypal.com"
-  }
+  "version": 2
 }

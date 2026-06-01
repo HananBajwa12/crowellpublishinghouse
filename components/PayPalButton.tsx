@@ -37,7 +37,7 @@ export default function PayPalButton({
         currency,
         intent: "capture",
         "disable-funding": "paypal",
-        commit: "true",
+        commit: true,
       }}
     >
       <PayPalButtons
