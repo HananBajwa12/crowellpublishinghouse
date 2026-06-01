@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Phone, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-
 const stats = [
   { value: 1500, label: "Authors Published", suffix: "+" },
   { value: 3200, label: "Five-Star Reviews", suffix: "+" },
