@@ -14,13 +14,15 @@ export async function POST(req: Request) {
     }
 
     const paypalMode = process.env.PAYPAL_MODE || "sandbox";
-    const paypalBaseUrl = paypalMode === "live" ? process.env.PAYPAL_LIVE_BASE_URL! : process.env.PAYPAL_SANDBOX_BASE_URL!;
+    const paypalBaseUrl = paypalMode === "live"
+      ? (process.env.PAYPAL_LIVE_BASE_URL || "https://api-m.paypal.com")
+      : (process.env.PAYPAL_SANDBOX_BASE_URL || "https://api-m.sandbox.paypal.com");
     const paypalClientId = process.env.PAYPAL_CLIENT_ID!;
     const paypalClientSecret = process.env.PAYPAL_CLIENT_SECRET!;
 
-    if (!paypalBaseUrl || !paypalClientId || !paypalClientSecret) {
+    if (!paypalClientId || !paypalClientSecret) {
       return NextResponse.json(
-        { error: "Missing PayPal environment variables" },
+        { error: "Missing PayPal credentials in environment variables" },
         { status: 500 }
       );
     }
