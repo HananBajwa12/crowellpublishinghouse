@@ -129,6 +129,8 @@ export function About() {
                   alt="Crowell Publishing House"
                   width={100}
                   height={100}
+                  quality={100}
+                  unoptimized
                   className="w-24 h-24 object-contain"
                 />
               </div>
@@ -143,8 +145,7 @@ export function About() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className={`p-6 rounded-2xl bg-background border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 group ${index === 1 || index === 2 ? "mt-8" : ""
-                    }`}
+                  className={"p-6 rounded-2xl bg-background border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 group" + (index === 1 || index === 2 ? " mt-8" : "")}
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
                     <feature.icon className="h-6 w-6 text-primary group-hover:text-primary-foreground transition-colors" />

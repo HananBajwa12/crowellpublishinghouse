@@ -20,18 +20,16 @@ export async function POST(req: Request) {
       );
     }
 
-    const paypalBaseUrl = process.env.PAYPAL_BASE_URL!;
+    const paypalMode = process.env.PAYPAL_MODE || "sandbox";
+    const paypalBaseUrl = paypalMode === "live" ? process.env.PAYPAL_LIVE_BASE_URL! : process.env.PAYPAL_SANDBOX_BASE_URL!;
     const paypalClientId = process.env.PAYPAL_CLIENT_ID!;
     const paypalClientSecret = process.env.PAYPAL_CLIENT_SECRET!;
 
-    const auth = Buffer.from(
-      `${paypalClientId}:${paypalClientSecret}`
-    ).toString("base64");
-
+    // Request OAuth token
     const tokenResponse = await fetch(`${paypalBaseUrl}/v1/oauth2/token`, {
       method: "POST",
       headers: {
-        Authorization: `Basic ${auth}`,
+        Authorization: `Basic ${Buffer.from(`${paypalClientId}:${paypalClientSecret}`).toString("base64")}`,
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: "grant_type=client_credentials",
@@ -41,6 +39,7 @@ export async function POST(req: Request) {
 
     if (!tokenResponse.ok) {
       console.error("PayPal Token Error Details:", tokenData);
+      console.error("Status:", tokenResponse.status, tokenResponse.statusText);
       return NextResponse.json(
         { error: "PayPal token error", details: tokenData },
         { status: 500 }
@@ -57,6 +56,16 @@ export async function POST(req: Request) {
       },
       body: JSON.stringify({
         intent: "CAPTURE",
+        payment_source: {
+          paypal: {
+            experience_context: {
+              landing_page: "GUEST_CHECKOUT",
+              user_action: "PAY_NOW",
+              shipping_preference: "NO_SHIPPING",
+              payment_method_preference: "IMMEDIATE_PAYMENT_REQUIRED",
+            },
+          },
+        },
         purchase_units: [
           {
             amount: {
@@ -78,9 +87,6 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
-
-    // DEBUG: Log the full response to see what links PayPal is sending
-    console.log("PayPal Order Response:", JSON.stringify(orderData, null, 2));
 
     const approvalLink = orderData.links?.find(
       (link: any) => link.rel === "approve" || link.rel === "payer-action"

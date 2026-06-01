@@ -1,155 +1,170 @@
+// PayPalButton.tsx
 "use client";
 
-import {
-  PayPalButtons,
-  PayPalScriptProvider,
-  usePayPalScriptReducer,
-} from "@paypal/react-paypal-js";
-import { useState } from "react";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-interface PayPalButtonProps {
+export interface PayPalButtonProps {
   amount: string;
-  currency: string;
+  currency?: string;
   description?: string;
-  clientName?: string;
-  clientEmail?: string;
   onSuccess?: (details: any) => void;
   onError?: (error: any) => void;
 }
 
-function ButtonWrapper({
+/**
+ * Renders a PayPal checkout that shows only the credit‑card form.
+ * It forces the CARD funding source and disables the standard PayPal button
+ * so users are not presented with a login / signup screen.
+ */
+export default function PayPalButton({
   amount,
-  currency,
+  currency = "USD",
   description,
-  clientName,
-  clientEmail,
   onSuccess,
   onError,
 }: PayPalButtonProps) {
-  const [{ isPending }] = usePayPalScriptReducer();
-  const [message, setMessage] = useState<string | null>(null);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
+  if (!clientId) {
+    return <p className="text-red-500">PayPal client ID missing.</p>;
+  }
+
+  const getFundingSource = () =>
+    typeof window !== "undefined" && (window as any).paypal
+      ? (window as any).paypal.FUNDING.CARD
+      : undefined;
 
   return (
-    <div className="w-full">
-      {/* Loading skeleton */}
-      {isPending && (
-        <div className="w-full h-14 rounded-full bg-slate-100 animate-pulse" />
-      )}
-
+    <PayPalScriptProvider
+      options={{
+        "client-id": clientId,
+        currency,
+        intent: "capture",
+        // Hide the PayPal account button – we only want the card form
+        "disable-funding": "paypal",
+        commit: "true",
+      }}
+    >
       <PayPalButtons
+        fundingSource={getFundingSource()}
         style={{
           layout: "vertical",
           color: "gold",
           shape: "pill",
           label: "pay",
-          height: 50,
+          height: 48,
         }}
-        disabled={false}
-        forceReRender={[amount, currency]}
         createOrder={async () => {
-          setMessage(null);
-          setStatus("idle");
-          try {
-            const res = await fetch("/api/paypal/create-order", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                amount,
-                currency,
-                description: description || "Payment",
-                client_name: clientName || "Guest",
-                client_email: clientEmail || "guest@example.com",
-              }),
-            });
-
-            const data = await res.json();
-
-            if (!res.ok || !data.paypal_order_id) {
-              throw new Error(data.error || "Failed to create PayPal order");
-            }
-
-            return data.paypal_order_id;
-          } catch (err: any) {
-            setMessage(err.message || "Could not initiate payment.");
-            setStatus("error");
-            throw err;
+          const res = await fetch("/api/paypal/create-order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ amount, currency, description }),
+          });
+          const data = await res.json();
+          if (!res.ok || !data.paypal_order_id) {
+            throw new Error(data.error || "Failed to create order");
           }
+          return data.paypal_order_id;
         }}
         onApprove={async (data) => {
-          try {
-            const res = await fetch("/api/paypal/capture-order", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ orderID: data.orderID }),
-            });
-
-            const captureData = await res.json();
-
-            if (!res.ok) {
-              throw new Error(captureData.error || "Capture failed");
-            }
-
-            setStatus("success");
-            setMessage(
-              `✅ Payment successful! Transaction ID: ${captureData.captureId}`
-            );
-            onSuccess?.(captureData);
-          } catch (err: any) {
-            setMessage(err.message || "Payment capture failed.");
-            setStatus("error");
-            onError?.(err);
+          const res = await fetch("/api/paypal/capture-order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ orderID: data.orderID }),
+          });
+          const capture = await res.json();
+          if (!res.ok) {
+            throw new Error(capture.error || "Capture failed");
           }
+          onSuccess?.(capture);
         }}
         onError={(err) => {
-          setMessage("Payment was cancelled or an error occurred.");
-          setStatus("error");
+          console.error(err);
           onError?.(err);
         }}
-        onCancel={() => {
-          setMessage("Payment was cancelled.");
-          setStatus("idle");
-        }}
       />
-
-      {/* Status message */}
-      {message && (
-        <p
-          className={`mt-3 text-sm text-center font-medium ${
-            status === "success"
-              ? "text-green-600"
-              : status === "error"
-              ? "text-red-500"
-              : "text-slate-500"
-          }`}
-        >
-          {message}
-        </p>
-      )}
-    </div>
+    </PayPalScriptProvider>
   );
 }
 
-export default function PayPalButton(props: PayPalButtonProps) {
-  const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
 
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
+export interface PayPalButtonProps {
+  amount: string;
+  currency?: string;
+  description?: string;
+  /** Called when the payment is captured successfully */
+  onSuccess?: (details: any) => void;
+  /** Called when an error occurs during the flow */
+  onError?: (error: any) => void;
+}
+
+/**
+ * Renders a PayPal checkout that shows only the credit‑card form.
+ * It forces the CARD funding source and disables the standard PayPal button
+ * so users are not presented with a login / signup screen.
+ */
+export default function PayPalButton({
+  amount,
+  currency = "USD",
+  description,
+  onSuccess,
+  onError,
+}: PayPalButtonProps) {
+  const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
   if (!clientId) {
-    return (
-      <p className="text-red-500 text-sm text-center">
-        PayPal Client ID is not configured.
-      </p>
-    );
+    return <p className="text-red-500">PayPal client ID missing.</p>;
   }
+
+  // Helper to safely obtain the CARD funding source on the client side
+  const getFundingSource = () =>
+    typeof window !== "undefined" && (window as any).paypal
+      ? (window as any).paypal.FUNDING.CARD
+      : undefined;
 
   return (
     <PayPalScriptProvider
       options={{
-        clientId,
-        currency: props.currency || "USD",
+        "client-id": clientId,
+        currency,
         intent: "capture",
+        // Hide the PayPal account button – we only want the card form
+        "disable-funding": "paypal",
+        commit: "true",
       }}
     >
-      <ButtonWrapper {...props} />
+      <PayPalButtons
+        fundingSource={getFundingSource()}
+        style={{ layout: "vertical", color: "gold", shape: "pill", label: "pay", height: 48 }}
+        createOrder={async () => {
+          const res = await fetch("/api/paypal/create-order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ amount, currency, description }),
+          });
+          const data = await res.json();
+          if (!res.ok || !data.paypal_order_id) {
+            throw new Error(data.error || "Failed to create order");
+          }
+          return data.paypal_order_id;
+        }}
+        onApprove={async (data) => {
+          const res = await fetch("/api/paypal/capture-order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ orderID: data.orderID }),
+          });
+          const capture = await res.json();
+          if (!res.ok) {
+            throw new Error(capture.error || "Capture failed");
+          }
+          onSuccess?.(capture);
+        }}
+        onError={(err) => {
+          console.error(err);
+          onError?.(err);
+        }}
+      />
     </PayPalScriptProvider>
   );
 }

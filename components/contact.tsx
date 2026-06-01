@@ -43,42 +43,65 @@ export function Contact() {
     phone: "",
     message: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     setIsSubmitting(true);
+    setErrorMessage("");
 
-    const subject = encodeURIComponent(
-      `Publishing consultation request from ${formData.firstName} ${formData.lastName}`.trim()
-    );
-    const body = encodeURIComponent(
-      [
-        `Name: ${formData.firstName} ${formData.lastName}`,
-        `Email: ${formData.email}`,
-        `Phone: ${formData.phone || "Not provided"}`,
-        "",
-        "Project Details:",
-        formData.message,
-      ].join("\n")
-    );
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
+      });
 
-    window.location.href = `mailto:info@crowellpublishinghouse.com?subject=${subject}&body=${body}`;
+      const data = await response.json();
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+      if (!response.ok) {
+        console.log("CONTACT FORM ERROR:", data);
+        setErrorMessage("Something went wrong. Please try again.");
+        return;
+      }
 
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+      setIsSubmitted(true);
+
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.log("SERVER ERROR:", error);
+      setErrorMessage("Server error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="py-20 bg-card">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -88,12 +111,12 @@ export function Contact() {
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-serif">
               Ready to Get Started?
             </h2>
+
             <p className="text-muted-foreground mb-8 text-lg">
               Take the first step toward publishing your book. Reach out to us
               for a free consultation and personalized quote.
             </p>
 
-            {/* Contact Cards */}
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
               {contactInfo.map((item, index) => (
                 <motion.div
@@ -108,8 +131,12 @@ export function Contact() {
                     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                       <item.icon className="h-5 w-5 text-primary" />
                     </div>
+
                     <div>
-                      <p className="text-sm text-muted-foreground">{item.label}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {item.label}
+                      </p>
+
                       {item.href ? (
                         <a
                           href={item.href}
@@ -118,7 +145,9 @@ export function Contact() {
                           {item.value}
                         </a>
                       ) : (
-                        <p className="font-medium text-foreground">{item.value}</p>
+                        <p className="font-medium text-foreground">
+                          {item.value}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -126,20 +155,18 @@ export function Contact() {
               ))}
             </div>
 
-            {/* Trust Message */}
             <div className="p-6 rounded-2xl bg-primary/5 border border-primary/20">
               <p className="text-foreground font-medium mb-2">
                 Why Choose Us?
               </p>
               <p className="text-muted-foreground text-sm">
-                Join thousands of satisfied authors who have trusted The Crowell Publishing House
-                to bring their stories to life. We&apos;re committed to your
-                success at every step of the journey.
+                Join thousands of satisfied authors who have trusted The Crowell
+                Publishing House to bring their stories to life. We&apos;re
+                committed to your success at every step of the journey.
               </p>
             </div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -160,7 +187,8 @@ export function Contact() {
                     Message Sent!
                   </h4>
                   <p className="text-muted-foreground">
-                    Thank you for reaching out. We&apos;ll get back to you within 24 hours.
+                    Thank you for reaching out. We&apos;ll get back to you
+                    within 24 hours.
                   </p>
                 </div>
               ) : (
@@ -173,11 +201,15 @@ export function Contact() {
                         placeholder="John"
                         value={formData.firstName}
                         onChange={(e) =>
-                          setFormData({ ...formData, firstName: e.target.value })
+                          setFormData({
+                            ...formData,
+                            firstName: e.target.value,
+                          })
                         }
                         required
                       />
                     </div>
+
                     <div className="space-y-2">
                       <Label htmlFor="lastName">Last Name</Label>
                       <Input
@@ -185,7 +217,10 @@ export function Contact() {
                         placeholder="Doe"
                         value={formData.lastName}
                         onChange={(e) =>
-                          setFormData({ ...formData, lastName: e.target.value })
+                          setFormData({
+                            ...formData,
+                            lastName: e.target.value,
+                          })
                         }
                         required
                       />
@@ -220,7 +255,9 @@ export function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Tell Us About Your Project</Label>
+                    <Label htmlFor="message">
+                      Tell Us About Your Project
+                    </Label>
                     <Textarea
                       id="message"
                       placeholder="Describe your book, your goals, and how we can help..."
@@ -232,6 +269,10 @@ export function Contact() {
                       required
                     />
                   </div>
+
+                  {errorMessage && (
+                    <p className="text-sm text-red-600">{errorMessage}</p>
+                  )}
 
                   <Button
                     type="submit"

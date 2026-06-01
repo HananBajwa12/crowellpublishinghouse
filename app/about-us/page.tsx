@@ -18,6 +18,8 @@ export default function AboutUsPage() {
             src="/about/building.jpg"
             alt="Historical Background"
             fill
+            quality={100}
+            unoptimized
             className="object-cover"
           />
         </div>
@@ -74,6 +76,8 @@ export default function AboutUsPage() {
                 src="/about/founder.jpg"
                 alt="Thomas Y. Crowell"
                 fill
+                quality={100}
+                unoptimized
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -100,6 +104,8 @@ export default function AboutUsPage() {
                 src="/about/building.jpg"
                 alt="Historical Headquarters"
                 fill
+                quality={100}
+                unoptimized
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
@@ -127,6 +133,8 @@ export default function AboutUsPage() {
                 src="/about/magazine.jpg"
                 alt="Woman's Home Companion"
                 fill
+                quality={100}
+                unoptimized
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />

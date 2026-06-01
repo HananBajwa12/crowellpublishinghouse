@@ -22,7 +22,7 @@ const services = [
   {
     icon: PenTool,
     title: "Select Your Package & Get Started",
-    image: "/process/pointing.png",
+    image: "/process/pointing_new.png",
     subtitle: "Ownership & Control",
     description: "Retain full rights, creative freedom, and royalties while receiving professional guidance. Our self-publishing approach ensures your vision is prioritized from day one.",
     href: "/services/book-publishing",
@@ -30,7 +30,7 @@ const services = [
   {
     icon: Users,
     title: "Dedicated Publishing Team",
-    image: "/process/team_laptop.png",
+    image: "/process/team_laptop_new.png",
     subtitle: "Personalized Support",
     description: "Collaborate with a Project Manager and Senior Publishing Consultant focused on guiding your book through every stage with consistent communication and strategic direction.",
     href: "/services/author-branding",
@@ -38,7 +38,7 @@ const services = [
   {
     icon: FileEdit,
     title: "Manuscript Development",
-    image: "/process/typewriter.png",
+    image: "/process/typewriter_new.png",
     subtitle: "Editorial Refinement",
     description: "Our editorial team elevates your manuscript through comprehensive editing designed to strengthen clarity, structure, and overall reader engagement while preserving your unique voice.",
     href: "/services/book-editing",
@@ -46,7 +46,7 @@ const services = [
   {
     icon: Palette,
     title: "Cover Design & Formatting",
-    image: "/process/design_snippet.jpg",
+    image: "/process/design_snippet_new.png",
     subtitle: "Visual Identity",
     description: "Professionally crafted cover designs and precise formatting for print and digital publication. We ensure optimal readability and full compliance with industry standards.",
     href: "/services/book-design",
@@ -54,7 +54,7 @@ const services = [
   {
     icon: CheckCircle2,
     title: "Final Proofreading",
-    image: "/process/book_coffee.png",
+    image: "/process/book_coffee_new.png",
     subtitle: "Quality Assurance",
     description: "Detailed quality review to identify and correct any remaining typographical errors or formatting inconsistencies, ensuring your book delivers a lasting impression.",
     href: "/services/editing-and-proofreading",
@@ -62,7 +62,7 @@ const services = [
   {
     icon: RocketIcon,
     title: "Global Distribution",
-    image: "/process/distribution.png",
+    image: "/process/distribution_new.png",
     subtitle: "Global Reach",
     description: "We oversee the complete publishing and distribution process on leading platforms such as Amazon Kindle, Barnes & Noble, and Ingram Spark to maximize your visibility.",
     href: "/services/book-distribution",
@@ -70,7 +70,7 @@ const services = [
   {
     icon: Award,
     title: "Royalties & Ownership",
-    image: "/process/bookshelf.png",
+    image: "/process/bookshelf_new.jpg",
     subtitle: "Earn from Your Work",
     description: "Maintain complete ownership of your intellectual property while earning royalties from every book sale across supported distribution platforms globally.",
     href: "/services/author-branding",
@@ -78,7 +78,7 @@ const services = [
   {
     icon: TrendingUp,
     title: "Publishing Success",
-    image: "/process/team_hands.png",
+    image: "/process/team_hands_new.jpg",
     subtitle: "Lasting Impact",
     description: "Professional attention and exposure in today’s competitive landscape. Explore optional services like targeted marketing to expand your book's reach and success.",
     href: "/testimonials",

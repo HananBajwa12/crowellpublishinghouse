@@ -13,7 +13,8 @@ export async function POST(req: Request) {
       );
     }
 
-    const paypalBaseUrl = process.env.PAYPAL_BASE_URL!;
+    const paypalMode = process.env.PAYPAL_MODE || "sandbox";
+    const paypalBaseUrl = paypalMode === "live" ? process.env.PAYPAL_LIVE_BASE_URL! : process.env.PAYPAL_SANDBOX_BASE_URL!;
     const paypalClientId = process.env.PAYPAL_CLIENT_ID!;
     const paypalClientSecret = process.env.PAYPAL_CLIENT_SECRET!;
 
