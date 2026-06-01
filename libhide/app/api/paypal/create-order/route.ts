@@ -68,11 +68,29 @@ console.log("BASE URL:", paypalBaseUrl);
         intent: "CAPTURE",
         purchase_units: [
           {
+            reference_id: `ORDER_${Date.now()}`,
+            description: description || "Payment for Services",
+            custom_id: description || "Payment for Services",
             amount: {
               currency_code: currency,
               value: Number(amount).toFixed(2),
+              breakdown: {
+                item_total: {
+                  currency_code: currency,
+                  value: Number(amount).toFixed(2),
+                },
+              },
             },
-            description: description || "Payment",
+            items: [
+              {
+                name: (description || "Service Payment").substring(0, 127),
+                quantity: "1",
+                unit_amount: {
+                  currency_code: currency,
+                  value: Number(amount).toFixed(2),
+                },
+              },
+            ],
           },
         ],
       }),
