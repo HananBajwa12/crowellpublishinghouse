@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(Test-Path \"C:\\\\Users\\\\HIJAZ TR\\\\Downloads\\\\crowellpublishinghouse\\\\node_modules\\\\@vercel\\\\analytics\")",
+      "Bash(node -e \"const p = require\\('C:/Users/HIJAZ TR/Downloads/crowellpublishinghouse/node_modules/@vercel/analytics/package.json'\\); console.log\\(JSON.stringify\\(p.exports, null, 2\\)\\)\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
+    ]
+  }
+}
