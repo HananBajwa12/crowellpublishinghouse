@@ -7,8 +7,8 @@
     }
   ],
   "env": {
-    "PAYPAL_CLIENT_ID": "<YOUR_LIVE_CLIENT_ID>",
-    "PAYPAL_CLIENT_SECRET": "<YOUR_LIVE_CLIENT_SECRET>",
+    "PAYPAL_CLIENT_ID": "AZ4T89wsLgt8jhapQ98Qp0vCGrg_iv40d_dkd84udhXCcVwQANGckSR6vrw57UnE7HafKv5VfLHyO_SY",
+    "PAYPAL_CLIENT_SECRET": "ENXU6rJPlY22oEQ7aZsreG5i5owcRP_88jQ7fXiCdoTSpJULGVJwi-G-Hl_VGfM0IpBqDNQ9lJugH9Pc",
     "PAYPAL_MODE": "live",
     "PAYPAL_LIVE_BASE_URL": "https://api-m.paypal.com"
   }
