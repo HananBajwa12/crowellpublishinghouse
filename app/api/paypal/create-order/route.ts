@@ -126,6 +126,9 @@ export async function POST(req: Request) {
       );
     }
 
+    const origin = req.headers.get("origin") || `https://${req.headers.get("host")}`;
+    const paymentLink = `${origin}/pay/${orderData.id}`;
+
     const { error: dbError } = await supabaseAdmin
       .from("payment_links")
       .insert({
@@ -149,7 +152,7 @@ export async function POST(req: Request) {
     return NextResponse.json({
       success: true,
       paypal_order_id: orderData.id,
-      payment_link: approvalLink,
+      payment_link: paymentLink,
     });
   } catch (error: any) {
     return NextResponse.json(
