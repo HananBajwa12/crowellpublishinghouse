@@ -33,7 +33,7 @@ export async function POST(req: Request) {
 
     const emailResult = await resend.emails.send({
       from: "Crowell Publishing <info@crowellpublishinghouse.com>",
-      to: "vtuberdenzytim@gmail.com",
+      to: "info@crowellpublishinghouse.com",
       replyTo: email,
       subject: `New Consultation Request from ${first_name} ${last_name}`,
       html: `
